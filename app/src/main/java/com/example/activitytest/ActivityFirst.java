@@ -1,5 +1,6 @@
 package com.example.activitytest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,7 +22,9 @@ public class ActivityFirst extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ActivityFirst.this, "You clicked Button 1", Toast.LENGTH_SHORT).show();
-                finish();
+                Intent intent = new Intent(ActivityFirst.this,ActivitySecond.class);
+                //显示intent 构造新intent的  第一个参数 提供启动活动的上下文，第二个参数 指定想要启动的目标活动
+                startActivity(intent);
             }
         });
     }
