@@ -1,13 +1,17 @@
 package com.example.activitytest;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.net.URI;
 
 public class ActivityFirst extends AppCompatActivity {
 
@@ -21,9 +25,18 @@ public class ActivityFirst extends AppCompatActivity {
             //获取按钮实例后，调用方法注册一个监听器
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityFirst.this, "You clicked Button 1", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ActivityFirst.this,ActivitySecond.class);
+                //Toast.makeText(ActivityFirst.this, "You clicked Button 1", Toast.LENGTH_SHORT).show();
+                /*Intent intent = new Intent(ActivityFirst.this,ActivitySecond.class);*/
                 //显示intent 构造新intent的  第一个参数 提供启动活动的上下文，第二个参数 指定想要启动的目标活动
+                //Intent intent = new Intent("com.example.activitytest.ACTION_START");
+                //intent.addCategory("com.example.activitytest.MY_CATEGORY");
+                //Intent intent = new Intent(Intent.ACTION_VIEW);
+                //指定一个android内置动作，常量值为android.intent.action.VIEW
+                //intent.setData(Uri.parse("http://www.baidu.com"));
+                //调用uri方法将网址转换，用setdata方法传入
+                String data = "Hello ActivitySecond";
+                Intent intent = new Intent(ActivityFirst.this,ActivitySecond.class);
+                intent.putExtra("extra_data",data);
                 startActivity(intent);
             }
         });

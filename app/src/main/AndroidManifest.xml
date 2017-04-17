@@ -10,14 +10,28 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ActivityFirst"
-            android:label="This is First Activiry">
+            android:label="This is First Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivitySecond"></activity>
+        <activity android:name=".ActivitySecond">
+            <intent-filter>
+                <action android:name="com.example.activitytest.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.activitytest.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ActivityThird">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="http"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
