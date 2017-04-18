@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,14 +35,27 @@ public class ActivityFirst extends AppCompatActivity {
                 //指定一个android内置动作，常量值为android.intent.action.VIEW
                 //intent.setData(Uri.parse("http://www.baidu.com"));
                 //调用uri方法将网址转换，用setdata方法传入
-                String data = "Hello ActivitySecond";
+/*                String data = "Hello ActivitySecond";
                 Intent intent = new Intent(ActivityFirst.this,ActivitySecond.class);
                 intent.putExtra("extra_data",data);
-                startActivity(intent);
+                startActivity(intent);*/
+                Intent intent = new Intent(ActivityFirst.this,ActivitySecond.class);
+                startActivityForResult(intent,1);
             }
         });
     }
-
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        switch (requestCode){
+            case 1 :
+                if (resultCode==RESULT_OK){
+                    String returnedData=data.getStringExtra("data_return");
+                    Log.d("FirstActivity",returnedData);
+                }
+                break;
+            default:
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
